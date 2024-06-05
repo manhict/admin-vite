@@ -129,13 +129,15 @@ const handleEnter = () => {
     return
   }
   if (!name) {
-    ElMessage.warning("无法通过搜索进入该菜单，请为对应的路由设置唯一的 Name")
+    ElMessage.warning(
+      "Unable to enter the menu through search, please set the uniquely for the corresponding route Name"
+    )
     return
   }
   try {
     router.push({ name })
   } catch {
-    ElMessage.error("该菜单有必填的动态参数，无法通过搜索进入")
+    ElMessage.error("This menu has a must -fill dynamic parameter, and cannot enter through search")
     return
   }
   handleClose()
@@ -162,12 +164,12 @@ const handleReleaseUpOrDown = () => {
     class="search-modal__private"
     append-to-body
   >
-    <el-input ref="inputRef" v-model="keyword" @input="handleSearch" placeholder="搜索菜单" size="large" clearable>
+    <el-input ref="inputRef" v-model="keyword" @input="handleSearch" placeholder="Search menu" size="large" clearable>
       <template #prefix>
         <SvgIcon name="search" />
       </template>
     </el-input>
-    <el-empty v-if="resultList.length === 0" description="暂无搜索结果" :image-size="100" />
+    <el-empty v-if="resultList.length === 0" description="No search results" :image-size="100" />
     <template v-else>
       <p>搜索结果</p>
       <el-scrollbar ref="scrollbarRef" max-height="40vh" always>

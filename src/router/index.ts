@@ -54,7 +54,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/dashboard/index.vue"),
         name: "Dashboard",
         meta: {
-          title: "首页",
+          title: "Dashboard",
           svgIcon: "dashboard",
           affix: true
         }
@@ -80,7 +80,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: "/link",
     meta: {
-      title: "外链",
+      title: "External chain",
       svgIcon: "link"
     },
     children: [
@@ -89,7 +89,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         component: () => {},
         name: "Link1",
         meta: {
-          title: "中文文档"
+          title: "Chinese documentation"
         }
       },
       {
@@ -97,7 +97,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         component: () => {},
         name: "Link2",
         meta: {
-          title: "新手教程"
+          title: "Novice tutorial"
         }
       }
     ]
@@ -108,7 +108,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     redirect: "/table/element-plus",
     name: "Table",
     meta: {
-      title: "表格",
+      title: "Sheet",
       elIcon: "Grid"
     },
     children: [
@@ -138,7 +138,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     redirect: "/menu/menu1",
     name: "Menu",
     meta: {
-      title: "多级路由",
+      title: "Multi -level route",
       svgIcon: "menu"
     },
     children: [
@@ -262,7 +262,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
     redirect: "/permission/page",
     name: "Permission",
     meta: {
-      title: "权限",
+      title: "Authority",
       svgIcon: "lock",
       roles: ["admin", "editor"], // 可以在根路由中设置角色
       alwaysShow: true // 将始终显示根菜单
@@ -273,7 +273,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/permission/page.vue"),
         name: "PagePermission",
         meta: {
-          title: "页面级",
+          title: "Page -level",
           roles: ["admin"] // 或者在子导航中设置角色
         }
       },
@@ -282,7 +282,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/permission/directive.vue"),
         name: "DirectivePermission",
         meta: {
-          title: "按钮级" // 如果未设置角色，则表示：该页面不需要权限，但会继承根路由的角色
+          title: "Button level" // 如果未设置角色，则表示：该页面不需要权限，但会继承根路由的角色
         }
       }
     ]

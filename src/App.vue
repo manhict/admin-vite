@@ -2,27 +2,28 @@
 import { useTheme } from "@/hooks/useTheme"
 import { ElNotification } from "element-plus"
 // 将 Element Plus 的语言设置为中文
-import zhCn from "element-plus/es/locale/lang/zh-cn"
+// import zhCn from "element-plus/es/locale/lang/zh-cn"
+import en from "element-plus/es/locale/lang/en"
 
 const { initTheme } = useTheme()
 
-/** 初始化主题 */
+/** Chủ đề khởi tạo*/
 initTheme()
 
-/** 作者小心思 */
+/** Tác giả nghĩ cẩn thận*/
 ElNotification({
   title: "Hello",
   type: "success",
   dangerouslyUseHTMLString: true,
   message:
-    "<a style='color: teal' target='_blank' href='https://github.com/un-pany/v3-admin-vite'>小项目获取 star 不易，如果你喜欢这个项目的话，欢迎点击这里支持一个 star ！这是作者持续维护的唯一动力（小声：毕竟是免费的）</a>",
+    "<a style='color: teal' target='_blank' href='https://github.com/un-pany/v3-admin-vite'>It is not easy for small projects to get a star. This is the only motivation for the author's continuous maintenance (whisper: In the end, it's free)</a>",
   duration: 0,
   position: "bottom-right"
 })
 </script>
 
 <template>
-  <el-config-provider :locale="zhCn">
+  <el-config-provider :locale="en">
     <router-view />
   </el-config-provider>
 </template>

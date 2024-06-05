@@ -46,14 +46,14 @@ const xGridOpt: VxeGridProps = reactive({
         field: "username",
         itemRender: {
           name: "$input",
-          props: { placeholder: "用户名", clearable: true }
+          props: { placeholder: "Username", clearable: true }
         }
       },
       {
         field: "phone",
         itemRender: {
           name: "$input",
-          props: { placeholder: "手机号", clearable: true }
+          props: { placeholder: "Phone number", clearable: true }
         }
       },
       {
@@ -61,10 +61,10 @@ const xGridOpt: VxeGridProps = reactive({
           name: "$buttons",
           children: [
             {
-              props: { type: "submit", content: "查询", status: "primary" }
+              props: { type: "submit", content: "Inquire", status: "primary" }
             },
             {
-              props: { type: "reset", content: "重置" }
+              props: { type: "reset", content: "Repossess" }
             }
           ]
         }
@@ -90,33 +90,33 @@ const xGridOpt: VxeGridProps = reactive({
     },
     {
       field: "username",
-      title: "用户名"
+      title: "Username"
     },
     {
       field: "roles",
-      title: "角色",
+      title: "Role",
       /** 自定义列与 type: "html" 的列一起使用，会产生错误，所以采用 TSX 实现 */
       slots: RoleColumnSolts
     },
     {
       field: "phone",
-      title: "手机号"
+      title: "Phone number"
     },
     {
       field: "email",
-      title: "邮箱"
+      title: "Mail"
     },
     {
       field: "status",
-      title: "状态",
+      title: "State",
       slots: StatusColumnSolts
     },
     {
       field: "createTime",
-      title: "创建时间"
+      title: "Creation time"
     },
     {
-      title: "操作",
+      title: "Operate",
       width: "150px",
       fixed: "right",
       showOverflow: false,
@@ -201,22 +201,22 @@ const xFormOpt: VxeFormProps = reactive({
   items: [
     {
       field: "username",
-      title: "用户名",
-      itemRender: { name: "$input", props: { placeholder: "请输入" } }
+      title: "Username",
+      itemRender: { name: "$input", props: { placeholder: "please enter" } }
     },
     {
       field: "password",
-      title: "密码",
-      itemRender: { name: "$input", props: { placeholder: "请输入" } }
+      title: "Password",
+      itemRender: { name: "$input", props: { placeholder: "please enter" } }
     },
     {
       align: "right",
       itemRender: {
         name: "$buttons",
         children: [
-          { props: { content: "取消" }, events: { click: () => xModalDom.value?.close() } },
+          { props: { content: "Cancel" }, events: { click: () => xModalDom.value?.close() } },
           {
-            props: { type: "submit", content: "确定", status: "primary" },
+            props: { type: "submit", content: "Sure", status: "primary" },
             events: { click: () => crudStore.onSubmitForm() }
           }
         ]
@@ -231,9 +231,9 @@ const xFormOpt: VxeFormProps = reactive({
         validator: ({ itemValue }) => {
           switch (true) {
             case !itemValue:
-              return new Error("请输入")
+              return new Error("Please enter")
             case !itemValue.trim():
-              return new Error("空格无效")
+              return new Error("Space invalid")
           }
         }
       }
@@ -244,9 +244,9 @@ const xFormOpt: VxeFormProps = reactive({
         validator: ({ itemValue }) => {
           switch (true) {
             case !itemValue:
-              return new Error("请输入")
+              return new Error("Please enter")
             case !itemValue.trim():
-              return new Error("空格无效")
+              return new Error("Space invalid")
           }
         }
       }
@@ -267,12 +267,12 @@ const crudStore = reactive({
   onShowModal: (row?: RowMeta) => {
     if (row) {
       crudStore.isUpdate = true
-      xModalOpt.title = "修改用户"
+      xModalOpt.title = "Modify the user"
       // 赋值
       xFormOpt.data.username = row.username
     } else {
       crudStore.isUpdate = false
-      xModalOpt.title = "新增用户"
+      xModalOpt.title = "New users"
     }
     // 禁用表单项
     const props = xFormOpt.items?.[0]?.itemRender?.props
@@ -292,7 +292,7 @@ const crudStore = reactive({
       const callback = () => {
         xFormOpt.loading = false
         xModalDom.value?.close()
-        ElMessage.success("操作成功")
+        ElMessage.success("Successful operation")
         !crudStore.isUpdate && crudStore.afterInsert()
         crudStore.commitQuery()
       }
@@ -317,19 +317,19 @@ const crudStore = reactive({
   },
   /** 删除 */
   onDelete: (row: RowMeta) => {
-    const tip = `确定 <strong style="color: var(--el-color-danger);"> 删除 </strong> 用户 <strong style="color: var(--el-color-primary);"> ${row.username} </strong> ？`
+    const tip = `Sure <strong style="color: var(--el-color-danger);"> Delete </strong> User <strong style="color: var(--el-color-primary);"> ${row.username} </strong> ？`
     const config: ElMessageBoxOptions = {
       type: "warning",
       showClose: true,
       closeOnClickModal: true,
       closeOnPressEscape: true,
-      cancelButtonText: "取消",
-      confirmButtonText: "确定",
+      cancelButtonText: "Cancel",
+      confirmButtonText: "Sure",
       dangerouslyUseHTMLString: true
     }
-    ElMessageBox.confirm(tip, "提示", config).then(() => {
+    ElMessageBox.confirm(tip, "hint", config).then(() => {
       deleteTableDataApi(row.id).then(() => {
-        ElMessage.success("删除成功")
+        ElMessage.success("successfully deleted")
         crudStore.afterDelete()
         crudStore.commitQuery()
       })
@@ -355,13 +355,13 @@ const crudStore = reactive({
     <vxe-grid ref="xGridDom" v-bind="xGridOpt">
       <!-- 左侧按钮列表 -->
       <template #toolbar-btns>
-        <vxe-button status="primary" icon="vxe-icon-add" @click="crudStore.onShowModal()">新增用户</vxe-button>
-        <vxe-button status="danger" icon="vxe-icon-delete">批量删除</vxe-button>
+        <vxe-button status="primary" icon="vxe-icon-add" @click="crudStore.onShowModal()">New users</vxe-button>
+        <vxe-button status="danger" icon="vxe-icon-delete">batch deletion</vxe-button>
       </template>
       <!-- 操作 -->
       <template #row-operate="{ row }">
-        <el-button link type="primary" @click="crudStore.onShowModal(row)">修改</el-button>
-        <el-button link type="danger" @click="crudStore.onDelete(row)">删除</el-button>
+        <el-button link type="primary" @click="crudStore.onShowModal(row)">Revise</el-button>
+        <el-button link type="danger" @click="crudStore.onDelete(row)">Delete</el-button>
       </template>
     </vxe-grid>
     <!-- 弹窗 -->

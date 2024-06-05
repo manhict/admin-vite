@@ -5,7 +5,9 @@ import SwitchRoles from "./components/SwitchRoles.vue"
 <template>
   <div class="app-container">
     <SwitchRoles />
-    <el-tag type="warning" size="large">当前页面只有 admin 角色可见，切换角色后将不能进入该页面</el-tag>
+    <el-tag type="warning" size="large"
+      >The current page is only visible to the Admin character. After switching the role, you will not enter the page
+    </el-tag>
   </div>
 </template>
 

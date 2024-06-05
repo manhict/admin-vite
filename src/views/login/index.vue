@@ -28,12 +28,12 @@ const loginFormData: LoginRequestData = reactive({
 })
 /** 登录表单校验规则 */
 const loginFormRules: FormRules = {
-  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  username: [{ required: true, message: "Please enter user name", trigger: "blur" }],
   password: [
-    { required: true, message: "请输入密码", trigger: "blur" },
-    { min: 8, max: 16, message: "长度在 8 到 16 个字符", trigger: "blur" }
+    { required: true, message: "Please enter the password", trigger: "blur" },
+    { min: 8, max: 16, message: "Độ dài là từ 8 đến 16 ký tự", trigger: "blur" }
   ],
-  code: [{ required: true, message: "请输入验证码", trigger: "blur" }]
+  code: [{ required: true, message: "Please enter verification code", trigger: "blur" }]
 }
 /** 登录逻辑 */
 const handleLogin = () => {
@@ -53,7 +53,7 @@ const handleLogin = () => {
           loading.value = false
         })
     } else {
-      console.error("表单校验不通过", fields)
+      console.error("Form check cannot be passed", fields)
     }
   })
 }
@@ -85,7 +85,7 @@ createCode()
           <el-form-item prop="username">
             <el-input
               v-model.trim="loginFormData.username"
-              placeholder="用户名"
+              placeholder="username"
               type="text"
               tabindex="1"
               :prefix-icon="User"
@@ -95,7 +95,7 @@ createCode()
           <el-form-item prop="password">
             <el-input
               v-model.trim="loginFormData.password"
-              placeholder="密码"
+              placeholder="password"
               type="password"
               tabindex="2"
               :prefix-icon="Lock"
@@ -108,7 +108,7 @@ createCode()
           <el-form-item prop="code">
             <el-input
               v-model.trim="loginFormData.code"
-              placeholder="验证码"
+              placeholder="Verification code"
               type="text"
               tabindex="3"
               :prefix-icon="Key"
@@ -131,7 +131,7 @@ createCode()
               </template>
             </el-input>
           </el-form-item>
-          <el-button :loading="loading" type="primary" size="large" @click.prevent="handleLogin">登 录</el-button>
+          <el-button :loading="loading" type="primary" size="large" @click.prevent="handleLogin">Log in</el-button>
         </el-form>
       </div>
     </div>

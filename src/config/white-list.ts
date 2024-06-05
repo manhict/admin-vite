@@ -1,14 +1,14 @@
 import { type RouteLocationNormalized } from "vue-router"
 
-/** 免登录白名单（匹配路由 path） */
+/** Danh sách màu trắng đăng nhập miễn phí (đường dẫn tuyến khớp)*/
 const whiteListByPath: string[] = ["/login"]
 
-/** 免登录白名单（匹配路由 name） */
+/** Danh sách màu trắng đăng nhập miễn phí (tên tuyến đường phù hợp)*/
 const whiteListByName: string[] = []
 
-/** 判断是否在白名单 */
+/** Xác định xem nó có trên danh sách trắng*/
 const isWhiteList = (to: RouteLocationNormalized) => {
-  // path 和 name 任意一个匹配上即可
+  // đường dẫn và namey có thể được kết hợp từng cái một
   return whiteListByPath.indexOf(to.path) !== -1 || whiteListByName.indexOf(to.name as any) !== -1
 }
 
